@@ -1,3 +1,8 @@
+#### v0.9.4 2013-06-18
+
+- [4540bc2](https://github.com/bootstraponline/test_runner/commit/4540bc2963f1ffed766d0011baa26144c0bcc1ee) Release 0.9.4
+
+
 #### v0.9.3 2013-06-18
 
 - [e71cf11](https://github.com/bootstraponline/test_runner/commit/e71cf11eca3751c6057b2c13dd6f05867ce068e4) Release 0.9.3
