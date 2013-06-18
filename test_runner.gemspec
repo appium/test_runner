@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency  'minitest', '= 4.7.4'
   s.add_runtime_dependency  'minitest-reporters', '= 0.14.18'
   s.add_runtime_dependency  'chronic_duration', '~> 0.10.2'
-  s.add_runtime_dependency  'appium_lib', '= 0.5.11'
+  s.add_runtime_dependency  'appium_lib', '= 0.5.12'
   s.add_runtime_dependency  'rest-client', '~> 1.6.7'
   s.add_runtime_dependency  'method_source', '~> 0.8.1'
   s.add_runtime_dependency  'rake', '~> 10.0.4'
