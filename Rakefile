@@ -64,9 +64,8 @@ task :release => :gem do
   sh "git commit --allow-empty -am 'Release #{version}'"
   sh 'git pull'
   sh "git tag v#{version}"
-  # update notes and docs now that there's a new tag
+  # update notes now that there's a new tag
   Rake::Task['notes'].execute
-  Rake::Task['docs'].execute
   sh "git commit --allow-empty -am 'Update release notes'"
   sh 'git push origin master'
   sh "git push origin v#{version}"
@@ -98,11 +97,6 @@ end
 desc 'Install gem'
 task :install => [ :gem, :uninstall ] do
   sh "gem install --no-rdoc --no-ri --local #{repo_name}-#{version}.gem"
-end
-
-desc 'Update android and iOS docs'
-task :docs do
-  sh "ruby docs_gen/make_docs.rb"
 end
 
 desc 'Update release notes'
