@@ -17,6 +17,7 @@ $passed = true
 
 # Report passed status to Sauce and quit the driver.
 def update_sauce opts
+  return unless $driver # driver must not be nil
   # must use selenium-webdriver (2.32.1) or better for .session_id
   id = session_id
   driver_quit
@@ -146,6 +147,55 @@ class MiniTest::Spec
   def before_first_method; end
 end
 
+module MiniTest
+  # @param source [Block] block.source
+  # @return [String] the rewritten source
+  def self._rewrite_dsl dsl_name, source
+    # remove: after do;
+    # t 'my test' do;
+    source.sub! /\s*#{dsl_name}.*do\s*;?/, ''
+    source = source.split "\n"
+    source[source.length-1] = source.last.sub /\s*end\s*$/, '' # remove last end
+    code = MiniTest::_rewrite_source source
+    code.join "\n" # array to string
+  end
+
+  # @param lines [String]  contains the center lines, after the first and last
+  # line have been removed.
+  # @return [String] the center lines rewritten with puts
+  def self._rewrite_source lines
+    carry_over = ''
+    carry_over_puts = ''
+    lines.map do |line|
+      printed_line = line.strip
+      # transform \n into \\n so it's printed properly by puts
+      printed_line = printed_line.gsub /\\/, '\\' * 4
+      result = "puts %(#{printed_line})\n#{line}"
+
+      begin
+        # chop off anything after '#'
+        # puts "Line: #{line}" if !carry_over.empty?
+        # check syntax will be nil if the line is just a comment
+        check_syntax = line.split('#').first
+        eval 'lambda {' + check_syntax + '}' if check_syntax
+        # syntax is ok. prepend carry over
+        result = carry_over_puts + carry_over + "\n" + result
+        carry_over = ''
+        carry_over_puts = ''
+      rescue SyntaxError
+        # invalid syntax, carry over next line
+        # puts "-- Adding to carry over before: #{carry_over}"
+        carry_over += "\n" + line
+        carry_over_puts += "\n" + "puts %(#{printed_line})"
+        # puts "-- Adding to carry over after: #{carry_over}"
+        result = ''
+      end
+      # puts "Result is: #{result}" if result.include? 'password'
+      result#.gsub!('puts %()', '') # remove empty puts
+    end
+  end
+end
+
 class MiniTest::Spec < MiniTest::Unit::TestCase
   module DSL
     # DSL accepts a block which defines a method.
@@ -153,14 +203,34 @@ class MiniTest::Spec < MiniTest::Unit::TestCase
     # after_last DSL defines the after_last_method
     # which is invoked on a test case.
     def after_last &block
+      code = MiniTest::_rewrite_dsl 'after_last', block.source
       define_method 'after_last_method' do
-        self.instance_eval &block
+        self.instance_eval code
+        super()
       end
     end
 
     def before_first &block
+      code = MiniTest::_rewrite_dsl 'before_first', block.source
       define_method 'before_first_method' do
-        self.instance_eval &block
+        self.instance_eval code
+        super()
+      end
+    end
+
+    def before type = nil, &block
+      code = MiniTest::_rewrite_dsl 'before', block.source
+      define_method :setup do
+        self.instance_eval code
+        super()
+      end
+    end
+
+    def after type = nil, &block
+      code = MiniTest::_rewrite_dsl 'after', block.source
+      define_method :teardown do
+        self.instance_eval code
+        super()
       end
     end
   end
@@ -182,41 +252,12 @@ class MiniTest::Unit
 
         next unless src.kind_of? String
 
-        ary = src.split "\n"
         # this may break code that spans more than one line
-        carry_over = ''
-        carry_over_puts = ''
-        center = ary[1..-2].map do |line|
-          printed_line = line.strip
-          # transform \n into \\n so it's printed properly by puts
-          printed_line = printed_line.gsub /\\/, '\\' * 4
-          result = "puts %(#{printed_line})\n#{line}"
-
-          begin
-            # chop off anything after '#'
-            # puts "Line: #{line}" if !carry_over.empty?
-            # check syntax will be nil if the line is just a comment
-            check_syntax = line.split('#').first
-            eval 'lambda {' + check_syntax + '}' if check_syntax
-            # syntax is ok. prepend carry over
-            result = carry_over_puts + carry_over + "\n" + result
-            carry_over = ''
-            carry_over_puts = ''
-          rescue SyntaxError
-            # invalid syntax, carry over next line
-            # puts "-- Adding to carry over before: #{carry_over}"
-            carry_over += "\n" + line
-            carry_over_puts += "\n" + "puts %(#{printed_line})"
-            # puts "-- Adding to carry over after: #{carry_over}"
-            result = ''
-          end
-          # puts "Result is: #{result}" if result.include? 'password'
-          result#.gsub!('puts %()', '') # remove empty puts
-        end
+        center = MiniTest::_rewrite_dsl 't', src
         # must use define method for test names with spaces.
-        rewrite = ["define_method(%Q(#{test_name})) do\n", center.join("\n"), ary.last].join "\n"
+        rewrite = ["define_method(%Q(#{test_name})) do\n", center, 'end'].join "\n"
         # $stdout.puts ' --- rewriting'
-        # $stdout.puts rewrite
+        # $stdout.puts rewrite.inspect
         # $stdout.puts ' --- rewrite complete'
         # undefine the existing test name
         # public_instance_methods
