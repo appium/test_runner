@@ -5,7 +5,7 @@ require 'date'
 
 # Defines gem name.
 def repo_name; 'test_runner' end # rubygems.org name
-def gh_name; 'bootstraponline/test_runner' end # the name as used on github.com
+def gh_name; 'test_runner' end # the name as used on github.com
 def version_file; "lib/#{repo_name}/version.rb" end
 def version_rgx; /VERSION = '([^']+)'/m end
 
@@ -124,7 +124,7 @@ task :notes do
     tag = pair.split('...').last
     dates.each do |line|
       # regular tag, or tag on master.
-      if line.include?('(' + tag + ')') || line.include?(tag + ',')
+      if line.include?(tag + ')') || line.include?(tag + ',')
         tag_date.push tag + ' ' + line.match(/\d{4}-\d{2}-\d{2}/)[0]
         break
       end
@@ -139,7 +139,7 @@ task :notes do
       # use first 7 chars to match GitHub
       comment = line.gsub(hex, '').strip
       next if comment == 'Update release notes'
-      new_data += "- [#{hex[0...7]}](https://github.com/#{gh_name}/commit/#{hex}) #{comment}\n"
+      new_data += "- [#{hex[0...7]}](https://github.com/appium/#{gh_name}/commit/#{hex}) #{comment}\n"
     end
     data = new_data + "\n"
 
