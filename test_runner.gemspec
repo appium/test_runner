@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/bootstraponline/TestRunner' # published as appium_console
   s.require_paths = [ 'lib' ]
 
-  s.add_runtime_dependency 'appium_lib', '= 0.5.15'
+  s.add_runtime_dependency 'appium_lib', '= 0.5.16'
   s.add_runtime_dependency 'chronic_duration', '~> 0.10.2'
   s.add_runtime_dependency 'method_source', '~> 0.8.1'
   # don't update minutest until minitest-reporters works with minitest 5
