@@ -1,3 +1,10 @@
+#### v0.9.8 2013-08-05
+
+- [c75cbb8](https://github.com/appium/test_runner/commit/c75cbb80ddaf17939b5cbbaa763ef033f1742d91) Release 0.9.8
+- [d4f4670](https://github.com/appium/test_runner/commit/d4f467006863662b059e49f9a0adf35adc04e6a5) Add test file
+- [3ab07d5](https://github.com/appium/test_runner/commit/3ab07d50837182d37c37e1b4e40713e4f047bb2c) Fix release notes
+
+
 #### v0.9.7 2013-07-26
 
 - [3565227](https://github.com/appium/test_runner/commit/3565227c51844f0ec4652d342293ba47a4e7a39d) Release 0.9.7
