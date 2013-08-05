@@ -20,17 +20,11 @@ Gem::Specification.new do |s|
   s.description = s.summary = 'TestRunner'
   s.description += '.' # avoid identical warning
   s.authors = s.email = [ 'code@bootstraponline.com' ]
-  s.homepage = 'https://github.com/bootstraponline/TestRunner' # published as appium_console
+  s.homepage = 'https://github.com/appium/test_runner'
   s.require_paths = [ 'lib' ]
 
   s.add_runtime_dependency 'appium_lib', '= 0.5.16'
-  s.add_runtime_dependency 'chronic_duration', '~> 0.10.2'
-  s.add_runtime_dependency 'method_source', '~> 0.8.1'
-  # don't update minutest until minitest-reporters works with minitest 5
-  s.add_runtime_dependency 'minitest', '= 4.7.4'
-  s.add_runtime_dependency 'minitest-reporters', '= 0.14.18'
-  s.add_runtime_dependency 'rake', '~> 10.1.0'
-  s.add_runtime_dependency 'rest-client', '~> 1.6.7'
+  s.add_runtime_dependency 'spec', '= 5.0.11'
 
   s.files = `git ls-files`.split "\n"
 end
