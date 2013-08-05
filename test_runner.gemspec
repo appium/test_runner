@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.require_paths = [ 'lib' ]
 
   s.add_runtime_dependency 'appium_lib', '= 0.5.16'
-  s.add_runtime_dependency 'spec', '= 5.0.11'
+  s.add_runtime_dependency 'spec', '= 5.0.12'
 
   s.files = `git ls-files`.split "\n"
 end
