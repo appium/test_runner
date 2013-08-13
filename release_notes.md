@@ -1,3 +1,9 @@
+#### v0.9.14 2013-08-12
+
+- [a5a3c46](https://github.com/appium/test_runner/commit/a5a3c46ee3498d9b55d8cc8305988fe4632f4d3c) Release 0.9.14
+- [9a4eaa6](https://github.com/appium/test_runner/commit/9a4eaa6403f3a1f6dc5b32b2904e6d22808c2f44) Update spec
+
+
 #### v0.9.13 2013-08-09
 
 - [1a26c6b](https://github.com/appium/test_runner/commit/1a26c6bd6b31e1d697fc8fbe2e709baafbd4dcb1) Release 0.9.13
