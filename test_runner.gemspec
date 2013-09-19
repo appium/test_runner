@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/appium/test_runner'
   s.require_paths = [ 'lib' ]
 
-  s.add_runtime_dependency 'appium_lib', '= 0.7.1'
+  s.add_runtime_dependency 'appium_lib', '= 0.8.0'
   s.add_runtime_dependency 'spec', '= 5.0.19'
 
   s.files = `git ls-files`.split "\n"
