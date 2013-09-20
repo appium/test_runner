@@ -1,3 +1,9 @@
+#### v0.9.23 2013-09-20
+
+- [9c3398d](https://github.com/appium/test_runner/commit/9c3398d20803824a372a260e8166fff8565c18b3) Release 0.9.23
+- [bf1d2eb](https://github.com/appium/test_runner/commit/bf1d2eb5ae3d4ae0e458784f698da731b5a39137) 'appium_lib', '= 0.10.0'
+
+
 #### v0.9.22 2013-09-19
 
 - [19549cb](https://github.com/appium/test_runner/commit/19549cbd8d92182aae8ff35e5b5d916dac12020a) Release 0.9.22
