@@ -1,3 +1,9 @@
+#### v0.9.32 2014-01-06
+
+- [02aa8e3](https://github.com/appium/test_runner/commit/02aa8e3ac6c53a1625e8878cf7b3c1c400bef109) Release 0.9.32
+- [aeb031f](https://github.com/appium/test_runner/commit/aeb031f790c4eba21896c08415339640445b0e49) Add flaky for video recording
+
+
 #### v0.9.31 2013-12-23
 
 - [46211c5](https://github.com/appium/test_runner/commit/46211c59dfbb238dec997965d57ce27bce5c0ab7) Release 0.9.31
