@@ -1,3 +1,13 @@
+#### v0.9.34 2014-01-09
+
+- [4317640](https://github.com/appium/test_runner/commit/4317640661123012eeda1be39b915369dfd94c82) Release 0.9.34
+- [e43cf3e](https://github.com/appium/test_runner/commit/e43cf3e171a955640b5d5dd0af2f06c83324a187) Update test_runner.gemspec
+- [7006f65](https://github.com/appium/test_runner/commit/7006f650733899f310f5d59bd9f57d86bd981324) Work on new versions also
+- [aad0248](https://github.com/appium/test_runner/commit/aad0248697309bc466944a2d37fd4f25c52cfbee) Release 0.9.33
+- [c9dbe35](https://github.com/appium/test_runner/commit/c9dbe3548662502848c6842d3831b33b0d9c534b) Release 0.9.33
+- [50abb6d](https://github.com/appium/test_runner/commit/50abb6d6c8352d1538b0da5abcb3e08eb7a92a3b) Release 0.9.33
+
+
 #### v0.9.33 2014-01-08
 
 - [c9dbe35](https://github.com/appium/test_runner/commit/c9dbe3548662502848c6842d3831b33b0d9c534b) Release 0.9.33
