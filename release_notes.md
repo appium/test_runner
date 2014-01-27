@@ -1,3 +1,9 @@
+#### v0.9.36 2014-01-27
+
+- [a7ab9b9](https://github.com/appium/test_runner/commit/a7ab9b9632c91ffb3be4d7768638866b7a88f782) Release 0.9.36
+- [6dad6af](https://github.com/appium/test_runner/commit/6dad6af16b4829026ad3c8e72994d878c69a5be8) Update gemspec
+
+
 #### v0.9.35 2014-01-13
 
 - [321fec3](https://github.com/appium/test_runner/commit/321fec32369e6fa15c0368a4507c2e9011637226) Release 0.9.35
