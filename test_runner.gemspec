@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'appium_lib', '>= 0.17.0'
   s.add_runtime_dependency 'flaky', '>= 0.0.28'
   s.add_runtime_dependency 'spec', '>= 5.0.19'
-  s.add_runtime_dependency 'appium_console', '~> 0.5.8'
+  s.add_runtime_dependency 'appium_console', '>= 0.5.8'
 
   s.files = `git ls-files`.split "\n"
 end
