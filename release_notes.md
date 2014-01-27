@@ -1,3 +1,9 @@
+#### v0.9.37 2014-01-27
+
+- [37b8086](https://github.com/appium/test_runner/commit/37b8086d4b61b41973142d89f9b38ada8e7806d1) Release 0.9.37
+- [bc32cac](https://github.com/appium/test_runner/commit/bc32cac7437eb660daa6a5f4c761dffc088c2160) Update test_runner.gemspec
+
+
 #### v0.9.36 2014-01-27
 
 - [a7ab9b9](https://github.com/appium/test_runner/commit/a7ab9b9632c91ffb3be4d7768638866b7a88f782) Release 0.9.36
